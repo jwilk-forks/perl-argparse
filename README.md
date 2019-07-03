@@ -15,7 +15,7 @@ NAME
       - Supporting both flag based named arguments and positional arguments
 
 VERSION
-    version 1.0.3
+    version 1.0.6
 
 SYNOPSIS
      use Getopt::ArgParse;
