@@ -27,7 +27,7 @@ sub new_parser {
 =head1 NAME
 
 Getopt::ArgParse - Parsing command line arguments with a richer and
-more user-friendly API interface, similar to python's argpare but with
+more user-friendly API interface, similar to python's argparse but with
 perlish extras.
 
 In particular, the modules provides the following features:
@@ -62,7 +62,7 @@ version 1.0.6
  # the option
  $ap->add_arg('--bool', '-b', type => 'Bool', dest => 'boo');
 
- # Parse a positonal option.
+ # Parse a positional option.
  # But in this case, better using subcommand. See below
  $ap->add_arg('command', required => 1);
 
@@ -167,7 +167,7 @@ version 1.0.6
  $sp->copy_args($command_parser); # You can also copy_parsers() but in this case
                                   # $common_parser doesn't have subparsers
 
-=head1 DESCRIPTIOIN
+=head1 DESCRIPTION
 
 Getopt::ArgParse, Getopt::ArgParse::Parser and related classes
 together aim to provide user-friendly interfaces for writing
@@ -223,7 +223,7 @@ A long description of the program.
 
 An object of Getopt::ArgParse::Namespace. An empty namespace is created if
 not provided. The parsed values are stored in it, and they can be
-refered to by their argument names as the namespace's properties,
+referred to by their argument names as the namespace's properties,
 e.g. $parser->namespace->boo. See also Getopt::ArgParse::Namespace
 
 =item * parser_configs
@@ -232,13 +232,13 @@ The Getopt::Long configurations. See also Getopt::Long
 
 =item * parents
 
-Parent parsents, whose argument and subparser specifications the new
+Parent parsers, whose argument and subparser specifications the new
 parser will copy. See copy() below
 
 =item * error_prefix
 
 Customize the message prefixed to error messages thrown by
-Getop::ArgParse, default to 'Getopt::ArgParse: '
+Getopt::ArgParse, default to 'Getopt::ArgParse: '
 
 =item * print_usage_if_help
 
@@ -256,9 +256,9 @@ usage messages if help is set.
   );
 
 The object method, arg_arg or the longer version add_argument, defines
-the specfication of an argument. It accepts the following parameters.
+the specification of an argument. It accepts the following parameters.
 
-add_args or add_arguments() is to add multiple multiple arguments.
+add_args or add_arguments() is to add multiple arguments.
 
 =over 8
 
@@ -278,7 +278,7 @@ underscores '_' when used as option names. For example:
     # command line: prog --dry-run
     $parser->namespace->dry_run; # The option's name is dry_run
 
-A name or option strings are following by named paramters.
+A name or option strings are following by named parameters.
 
 =item * dest
 
@@ -343,10 +343,10 @@ choices specifies a list of the allowable values for the argument or a
 subroutine that validates input values.
 
 choices_i specifies a list of the allowable values for the argument,
-but case insenstive, and it doesn't allow to use a subroutine for
+but case insensitive, and it doesn't allow to use a subroutine for
 validation.
 
-Either choices or chioces_i can be present or completely omitted, but
+Either choices or choices_i can be present or completely omitted, but
 not both at the same time.
 
 =item * default
@@ -358,7 +358,7 @@ Only one value is allowed for scalar argument types: Scalar, Count, and Bool.
 =item * required
 
 Whether or not the command-line option may be omitted (optionals
-only). This has no effect on types 'Bool' and 'Count'. An named
+only). This has no effect on types 'Bool' and 'Count'. A named
 option is marked by the question mark ? in the generated usage, e.g.
     --help, -h             ? show this help message and exit
 
@@ -424,14 +424,14 @@ Second, parsing for positional arguments takes place after that for
 named arguments. It will consume what's still left in the command
 line.
 
-Finally, the Namespace object is accumulatively poplulated. If
+Finally, the Namespace object is accumulatively populated. If
 parse_args() is called multiple times to parse a number of command
 lines, the same namespace object is accumulatively populated.  For
 Scalar and Bool options, this means the previous value will be
-overwrittend. For Pair and Array options, values will be appended. And
+overwritten. For Pair and Array options, values will be appended. And
 for a Count option, it will add on top of the previous value.
 
-In face, the program can choose to pass a already populated namespace
+In face, the program can choose to pass an already populated namespace
 when creating a parser object. This is to allow the program to pre-load
 values to a namespace from conf files before parsing the command line.
 
@@ -559,11 +559,11 @@ will be copied by the new parser.
 
    $subparser = $parser->get_parser('ls');
 
-Return the parser for parsing the $alias command if exsist.
+Return the parser for parsing the $alias command if exists.
 
 =head2 Copying Parsers
 
-A parser can copy argument specification or subcommand specifciation
+A parser can copy argument specification or subcommand specification
 for existing parsers. A use case for this is that the program wants all
 subcommands to have a command set of arguments.
 
@@ -591,20 +591,20 @@ Copy both arguments and subparsers.
 
   $usage = $parser->format_usage;
 
-Return the formated usage message for the whole program in an array
+Return the formatted usage message for the whole program in an array
 reference.
 
 =head3 print_usage
 
    $parser->print_usage;
 
-Print the usage mesage returned by format_usage().
+Print the usage message returned by format_usage().
 
 =head3 format_command_usage
 
   $usage = $parser->format_command_usage($subcommand);
 
-Return the formated usage message for the command in an array
+Return the formatted usage message for the command in an array
 reference.
 
 =head3 print_command_usage

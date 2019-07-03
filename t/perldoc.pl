@@ -15,7 +15,7 @@ $ap = Getopt::ArgParse->new_parser(
  # the option
  $ap->add_argument('--bool', '-b', type => 'Bool', dest => 'boo');
 
- # Parse a positonal option.
+ # Parse a positional option.
  # But in this case, better using subcommand. See below
 $ap->add_argument('command', required => 1);
 
